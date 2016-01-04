@@ -12,4 +12,8 @@ if [ "$ONBUILD" = true ]; then
     patch -p0 --no-backup-if-mismatch --directory=$PROJECT < .patch/$VERSION/$VARIANT/Dockerfile.patch
 
     docker build -t "$TAG:$TAGSPECIFIER-onbuild" "$PROJECT/$VERSION/$VARIANT"
+else
+    echo       "FROM $TAG:$TAGSPECIFIER-onbuild" > Dockerfile.onbuild
+    docker pull     "$TAG:$TAGSPECIFIER-onbuild"
+    docker build -t "$TAG:$TAGSPECIFIER" -f Dockerfile.onbuild .
 fi
