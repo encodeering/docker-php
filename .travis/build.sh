@@ -2,8 +2,10 @@
 
 set -ev
 
+BRANCH=${BRANCH##master}
+BRANCH=${BRANCH:+-${BRANCH}}
 TAG="$REPOSITORY/$PROJECT-$ARCH"
-TAGSPECIFIER="$VERSION-$VARIANT"
+TAGSPECIFIER="$VERSION-$VARIANT$BRANCH"
 
 if [ "$ONBUILD" = true ]; then
     docker pull   "$REPOSITORY/debian-$ARCH:jessie"
