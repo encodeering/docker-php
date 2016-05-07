@@ -16,7 +16,6 @@ if [ "$ONBUILD" = true ]; then
     docker build -t "$TAG:$TAGSPECIFIER-onbuild" "$PROJECT/$VERSION/$VARIANT"
 else
     echo       "FROM $TAG:$TAGSPECIFIER-onbuild" > Dockerfile.onbuild
-    docker pull     "$TAG:$TAGSPECIFIER-onbuild"
     docker build -t "$TAG:$TAGSPECIFIER" -f Dockerfile.onbuild .
 
     docker run --rm "$TAG:$TAGSPECIFIER" php -v
