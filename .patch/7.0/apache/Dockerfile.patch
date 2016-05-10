@@ -1,0 +1,41 @@
+diff --git a/7.0/apache/Dockerfile b/7.0/apache/Dockerfile
+index ee83d5c..d8a2534 100644
+--- a/7.0/apache/Dockerfile
++++ b/7.0/apache/Dockerfile
+@@ -46,8 +46,7 @@ ENV PHP_VERSION 7.0.6
+ ENV PHP_FILENAME php-7.0.6.tar.xz
+ ENV PHP_SHA256 1b237a9455e5476a425dbb9d99966bad68107747c601958cb9558a7fb49ab419
+ 
+-RUN set -xe \
+-	&& buildDeps=" \
++ENV buildDeps=" \
+ 		$PHP_EXTRA_BUILD_DEPS \
+ 		libcurl4-openssl-dev \
+ 		libedit-dev \
+@@ -55,7 +54,8 @@ RUN set -xe \
+ 		libssl-dev \
+ 		libxml2-dev \
+ 		xz-utils \
+-	" \
++	"
++RUN set -xe \
+ 	&& apt-get update && apt-get install -y $buildDeps --no-install-recommends && rm -rf /var/lib/apt/lists/* \
+ 	&& curl -fSL "http://php.net/get/$PHP_FILENAME/from/this/mirror" -o "$PHP_FILENAME" \
+ 	&& echo "$PHP_SHA256 *$PHP_FILENAME" | sha256sum -c - \
+@@ -82,12 +82,13 @@ RUN set -xe \
+ 		--with-curl \
+ 		--with-libedit \
+ 		--with-openssl \
+-		--with-zlib \
+-	&& make -j"$(nproc)" \
++		--with-zlib
++ONBUILD RUN cd /usr/src/php && make -j"$(nproc)" \
+ 	&& make install \
+ 	&& { find /usr/local/bin /usr/local/sbin -type f -executable -exec strip --strip-all '{}' + || true; } \
+ 	&& make clean \
+-	&& apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false -o APT::AutoRemove::SuggestsImportant=false $buildDeps
++	&& apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false -o APT::AutoRemove::SuggestsImportant=false $buildDeps \
++	&& unset buildDeps
+ 
+ COPY docker-php-ext-* /usr/local/bin/
+ 
