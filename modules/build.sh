@@ -13,6 +13,6 @@ import com.encodeering.docker.docker
 
 docker-pull "$REPOSITORY/debian-$ARCH:jessie" "debian:jessie"
 
-docker build -t "$DOCKER_IMAGE" "$PROJECT/$VERSION/$VARIANT"
+docker build -t "$DOCKER_IMAGE" "$PROJECT/$VERSION/jessie/$VARIANT"
 
 docker run --rm "$DOCKER_IMAGE" php -v
