@@ -18,6 +18,7 @@ env:
     - ARCH=amd64 VERSION=5.6 VARIANT=apache
     - ARCH=amd64 VERSION=7.0 VARIANT=apache
     - ARCH=amd64 VERSION=7.2 VARIANT=apache
+    - ARCH=amd64 VERSION=7.2 VARIANT=fpm
 
 install:
 - bash <(curl https://raw.githubusercontent.com/encodeering/docker-ci/master/install.sh) 0.1.5
