@@ -11,8 +11,13 @@ set -e
 import com.encodeering.docker.config
 import com.encodeering.docker.docker
 
-docker-pull "$REPOSITORY/debian-$ARCH:jessie" "debian:jessie"
+case "$VERSION" in
+    7.2) FROM=stretch; TO=stretch-slim ;;
+      *) FROM=jessie ; TO=jessie       ;;
+esac
 
-docker build -t "$DOCKER_IMAGE" "$PROJECT/$VERSION/jessie/$VARIANT"
+docker-pull "$REPOSITORY/debian-$ARCH:$FROM" "debian:$TO"
+
+docker build -t "$DOCKER_IMAGE" "$PROJECT/$VERSION/$FROM/$VARIANT"
 
 docker run --rm "$DOCKER_IMAGE" php -v
