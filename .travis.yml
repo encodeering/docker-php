@@ -13,7 +13,6 @@ env:
     - PROJECT="php"
     - REPOSITORY="encodeering"
     - BRANCH="$TRAVIS_BRANCH"
-    - COMMIT="f4baf0edbc4e05e241938c68bcc7c9635707583d"
   matrix:
     - BASE=debian ARCH=amd64 VERSION=5.6 VARIANT=apache
     - BASE=debian ARCH=amd64 VERSION=7.0 VARIANT=apache
@@ -22,10 +21,10 @@ env:
     - BASE=alpine ARCH=amd64 VERSION=7.2 VARIANT=fpm
 
 install:
-- bash <(curl https://raw.githubusercontent.com/encodeering/docker-ci/master/install.sh) 0.1.5
+- bash <(curl https://raw.githubusercontent.com/encodeering/docker-ci/master/install.sh) 0.1.6
 
 before_script:
-- sudo -E bash ./module.sh "." "./setup.sh" "https://github.com/docker-library/php.git" "modules/$PROJECT" "$COMMIT"
+- sudo -E bash ./module.sh "." "./setup.sh"
 
 script:
 - sudo -E bash ./module.sh "modules" "./build.sh"
