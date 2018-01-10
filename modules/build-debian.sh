@@ -2,8 +2,8 @@
 
 set -e
 
-import com.encodeering.docker.config
-import com.encodeering.docker.docker
+import com.encodeering.ci.config
+import com.encodeering.ci.docker
 
 case "$VERSION" in
     7.2) FROM=stretch; TO=stretch-slim ;;
@@ -12,4 +12,4 @@ esac
 
 docker-pull "$REPOSITORY/debian-$ARCH:$FROM" "debian:$TO"
 
-docker build -t "$DOCKER_IMAGE" "$PROJECT/$VERSION/$FROM/$VARIANT"
+docker-build "$PROJECT/$VERSION/$FROM/$VARIANT"
