@@ -14,8 +14,10 @@ env:
     - REPOSITORY="encodeering"
   matrix:
     - BASE=debian ARCH=amd64 VERSION=7.0 VARIANT=apache
+    - BASE=debian ARCH=amd64 VERSION=7.0 VARIANT=fpm
     - BASE=debian ARCH=amd64 VERSION=7.2 VARIANT=apache
     - BASE=debian ARCH=amd64 VERSION=7.2 VARIANT=fpm
+    - BASE=alpine ARCH=amd64 VERSION=7.2 VARIANT=cli
     - BASE=alpine ARCH=amd64 VERSION=7.2 VARIANT=fpm
 
 install:
