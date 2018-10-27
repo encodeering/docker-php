@@ -9,6 +9,7 @@
 
     ```docker pull encodeering/php-armhf:5.6-debian-apache```  
     ```docker pull encodeering/php-armhf:7.0-debian-apache```  
+    ```docker pull encodeering/php-armhf:7.0-debian-fpm```  
     ```docker pull encodeering/php-armhf:7.2-debian-apache```  
     ```docker pull encodeering/php-armhf:7.2-debian-fpm```  
     ```docker pull encodeering/php-armhf:7.2-alpine-fpm```
@@ -17,6 +18,7 @@
 
     ```docker pull encodeering/php-amd64:5.6-debian-apache```  
     ```docker pull encodeering/php-amd64:7.0-debian-apache```  
+    ```docker pull encodeering/php-amd64:7.0-debian-fpm```  
     ```docker pull encodeering/php-amd64:7.2-debian-apache```  
     ```docker pull encodeering/php-amd64:7.2-debian-fpm```  
     ```docker pull encodeering/php-amd64:7.2-alpine-fpm```
