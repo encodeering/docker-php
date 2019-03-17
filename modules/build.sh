@@ -7,4 +7,4 @@ import com.encodeering.ci.docker
 
 ./build-${BASE}.sh
 
-docker-verify php -v
+docker-verify php -v | dup | contains "PHP ${VERSION}"
