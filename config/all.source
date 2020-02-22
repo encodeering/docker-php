@@ -1,3 +1,3 @@
 SCM_SOURCE=https://github.com/docker-library/php.git
 SCM_TARGET=modules/$PROJECT
-SCM_COMMIT=406fcd31e62d633f62ac0d7bc5fc29aa1b3929fc
+SCM_COMMIT=a80762e229981b94c9fe6c381637350e9104096a
