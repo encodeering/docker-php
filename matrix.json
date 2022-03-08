@@ -1,0 +1,12 @@
+{
+    "concourse": {
+        "dind": "0.1.14"
+    },
+    "platforms": ["amd64", "armhf"],
+    "pipelines": [
+        { "project": "php", "base": "debian", "version": "7.3", "variant": "apache" },
+        { "project": "php", "base": "debian", "version": "7.3", "variant": "fpm"    },
+        { "project": "php", "base": "alpine", "version": "7.3", "variant": "fpm"    },
+        { "project": "php", "base": "alpine", "version": "7.3", "variant": "cli"    }
+    ]
+}
