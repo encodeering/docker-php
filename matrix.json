@@ -1,6 +1,6 @@
 {
     "concourse": {
-        "dind": "0.1.14"
+        "dind": "0.1.15"
     },
     "platforms": ["amd64", "armhf"],
     "pipelines": [
